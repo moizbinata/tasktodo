@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:tasktodo/Views/edit_task.dart';
+import 'package:tasktodo/auth/check_auth.dart';
+import 'package:tasktodo/auth/google_sign_in.dart';
 import 'package:tasktodo/utils/components.dart';
 import 'package:tasktodo/utils/constants.dart';
 import 'package:tasktodo/utils/size_config.dart';
@@ -94,7 +97,17 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Get.offAndToNamed('/editTask');
+                  final provider =
+                      Provider.of<GoogleSignInProvider>(context, listen: false);
+                  provider.googleLogin().whenComplete(
+                    () {
+                      // Get.offAndToNamed('/editTask');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => CheckAuth()),
+                      );
+                    },
+                  );
                 },
                 child: regularText(
                   "LOGIN",

@@ -37,6 +37,10 @@ dependencies:
   get: ^4.6.1
   get_storage: ^2.0.3
   font_awesome_flutter: ^9.2.0
+  firebase_auth: ^3.3.7
+  google_sign_in: ^5.2.3
+  firebase_core: ^1.12.0
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:
